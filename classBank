@@ -1,0 +1,65 @@
+class Bank {
+  constructor(name, surname) {
+    this.name = name;
+    this.surname = surname;
+    this.usdAccount = 50000;
+    this.amdAccount = 40000;
+    this.availableLoan = 100000;
+  }
+
+  getLoan() {
+    this.amdAccount += this.availableLoan;
+    console.log(`Your AMD balance is ${this.amdAccount} after getting the loan.`);
+  }
+
+  getMyBalance(currency) {
+    if (currency === 'USD') {
+      console.log(`Your USD balance is ${this.usdAccount}.`);
+    } else if (currency === 'AMD') {
+      console.log(`Your AMD balance is ${this.amdAccount}.`);
+    } else {
+      console.log("You don't have that type of currency.");
+    }
+  }
+
+  creditMyAccount(account, amount) {
+    if (typeof amount !== "number") {
+      console.log("Amount must be a number.");
+      return;
+    }
+
+    if (account === "USD") {
+      this.usdAccount += amount;
+      console.log(`Successfully credited. Your USD balance is ${this.usdAccount}.`);
+    } else if (account === "AMD") {
+      this.amdAccount += amount;
+      console.log(`Successfully credited. Your AMD balance is ${this.amdAccount}.`);
+    } else {
+      console.log("Please input currency in correct form.");
+    }
+  }
+
+  cashOut(account, amount) {
+    if (typeof amount !== "number") {
+      console.log("Amount must be a number.");
+      return;
+    }
+
+    if (account === "USD" && amount <= this.usdAccount) {
+      this.usdAccount -= amount;
+      console.log(`Successfully cashed out. Your USD balance is ${this.usdAccount}.`);
+    } else if (account === "AMD" && amount <= this.amdAccount) {
+      this.amdAccount -= amount;
+      console.log(`Successfully cashed out. Your AMD balance is ${this.amdAccount}.`);
+    } else {
+      console.log("Not enough money  or incorrect currency.");
+    }
+  }
+}
+
+let redBank = new Bank("Levon", "Navasardyan");
+redBank.getMyBalance('USD')
+redBank.getLoan()
+redBank.creditMyAccount('USD', 10000)
+redBank.cashOut('USD', 20000)
+  
