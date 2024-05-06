@@ -1,0 +1,24 @@
+function reduceImplement(callback, initialValue) {
+  return function reducing(array) {
+    let accumulator;
+    if (initialValue === undefined) {
+      accumulator = array[0];
+    } else {
+      accumulator = initialValue;
+    }
+    
+    for (let i = initialValue !== undefined ? 0 : 1; i < array.length; i++) {
+      accumulator = callback(accumulator, array[i], i, array);
+    }
+    
+    return accumulator;
+  };
+}
+
+const numbers = [1, 2, 3, 4, 5];
+
+const sum = reduceImplement((accumulator, currentValue) => {
+  return accumulator + currentValue;
+},0)(numbers);
+
+console.log(sum);
