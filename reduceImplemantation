@@ -15,10 +15,13 @@ function reduceImplement(callback, initialValue) {
   };
 }
 
-const numbers = [1, 2, 3, 4, 5];
+Array.prototype.reduceImplement = function(callback,initilaValue){
+ return reduceImplement(callback,initilaValue)(this)
+}
 
-const sum = reduceImplement((accumulator, currentValue) => {
-  return accumulator + currentValue;
-},0)(numbers);
+let newArr = [1,2,3,4,5]
+const sum = newArr.reduceImplement((accumulator,currentValue)=>{
+  return accumulator + currentValue
+},0)
 
-console.log(sum);
+console.log(sum)
