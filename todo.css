@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.task-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.task-item span {
+    flex-grow: 1; 
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.task-item.completed span {
+    text-decoration: line-through;
+    color: #888; 
+}
+
+.delete-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
