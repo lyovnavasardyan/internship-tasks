@@ -1,0 +1,27 @@
+const staircase = {
+  step: 5,
+  nextStep: {
+    step: 4,
+    nextStep: {
+      step: 3,
+      nextStep: {
+        step: 2,
+        nextStep: {
+          step: 1,
+        },
+      },
+    },
+  },
+};
+
+const fn = (obj)=>{
+		for(let key in obj){
+      while(obj.hasOwnProperty('nextStep')){
+      	console.log(obj.step)
+        return fn(obj.nextStep)
+      }
+    }
+    console.log("finished")
+}
+
+fn(staircase);
